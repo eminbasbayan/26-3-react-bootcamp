@@ -8,7 +8,7 @@ const Products = () => {
       <h1>Products Component</h1>
       <div className="products-wrapper">
         {productsData.map((product) => (
-          <ProductCard fullName="Emin Başbayan" />
+          <ProductCard product={product} key={product.id} />
         ))}
       </div>
     </div>
