@@ -1,0 +1,16 @@
+.product-card{
+    width: 250px;
+    border: 1px solid #ccc;
+}
+
+.product-image{
+    width: 100%;
+}
+
+.product-info{
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    row-gap: 10px;
+    font-size: 18px;
+}
