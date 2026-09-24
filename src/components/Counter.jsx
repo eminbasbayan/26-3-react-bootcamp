@@ -3,6 +3,8 @@ import { useState } from 'react';
 const Counter = () => {
   const [count, setCount] = useState(0);
 
+  console.log('Component render oldu!');
+
   function arttir() {
     // count = count + 1 hatalı kullanım
     // setCount(count + 1);
