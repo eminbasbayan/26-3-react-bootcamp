@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './AddProductForm.css';
 
-const AddProductForm = () => {
+const AddProductForm = ({ addNewProduct }) => {
   const [product, setProduct] = useState({
     title: '',
     price: '',
@@ -15,7 +15,13 @@ const AddProductForm = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(product);
+    const newProduct = {
+      ...product,
+      id: Math.random(),
+      price: Number(product.price),
+    };
+
+    addNewProduct(newProduct);
   }
 
   return (
