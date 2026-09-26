@@ -1,8 +1,14 @@
 import Button from './Button';
 import './ProductCard.css';
 
-function ProductCard({ product }) {
-  const { image, title, price, description } = product;
+function ProductCard({ product, setProducts }) {
+  const { id, image, title, price, description } = product;
+
+  function deleteProduct() {
+    if (confirm('Ürünü silmek istediğine emin misin?')) {
+      setProducts((prevProducts) => prevProducts.filter((p) => p.id !== id));
+    }
+  }
 
   return (
     <div className="product-card">
@@ -12,8 +18,8 @@ function ProductCard({ product }) {
         <p className="product-description">{description}</p>
         <span className="product-price">{price}₺</span>
         <div className="product-buttons">
-          <Button>
-            <strong>Sepete Ekle</strong>
+          <Button onClick={deleteProduct}>
+            <strong>Ürünü Sil</strong>
           </Button>
         </div>
       </div>

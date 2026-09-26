@@ -7,9 +7,6 @@ import { useState } from 'react';
 const Products = () => {
   const [products, setProducts] = useState(productsData);
 
-  console.log(products);
-  
-
   function addNewProduct(newProduct) {
     setProducts((prevProducts) => [newProduct, ...prevProducts]);
     // setProducts([newProduct, ...products]);
@@ -21,7 +18,7 @@ const Products = () => {
       <AddProductForm addNewProduct={addNewProduct} />
       <div className="products-wrapper">
         {products.map((product) => (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard product={product} key={product.id} setProducts={setProducts} />
         ))}
       </div>
     </div>
