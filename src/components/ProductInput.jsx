@@ -1,4 +1,4 @@
-const ProductInput = ({ label, type, name, placeholder, onChange }) => {
+const ProductInput = ({ label, type, name, placeholder, onChange, value }) => {
   return (
     <label>
       {label}:
@@ -7,6 +7,7 @@ const ProductInput = ({ label, type, name, placeholder, onChange }) => {
         placeholder={placeholder}
         name={name}
         onChange={onChange}
+        value={value}
       />
     </label>
   );

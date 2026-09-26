@@ -12,6 +12,7 @@ const Products = () => {
 
   function addNewProduct(newProduct) {
     setProducts((prevProducts) => [newProduct, ...prevProducts]);
+    // setProducts([newProduct, ...products]);
   }
 
   return (

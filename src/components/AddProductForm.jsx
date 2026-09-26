@@ -36,12 +36,24 @@ const AddProductForm = ({ addNewProduct }) => {
     };
 
     addNewProduct(newProduct);
+
+    setProduct({
+      title: '',
+      price: '',
+      image: '',
+      description: '',
+    });
   }
 
   return (
     <form className="add-product-form" onSubmit={handleSubmit}>
       {productInputs.map((input) => (
-        <ProductInput key={input.name} {...input} onChange={handleChange} />
+        <ProductInput
+          key={input.name}
+          {...input}
+          onChange={handleChange}
+          value={product[input.name]}
+        />
       ))}
       <button type="submit">Yeni Ürün Ekle</button>
     </form>
