@@ -19,6 +19,16 @@ const AddProductForm = ({ addNewProduct }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    const isFormValid = Object.values(product).every(
+      (value) => value.trim() !== '',
+    );
+
+    if (!isFormValid) {
+      alert('Inputlar boş bırakılamaz!');
+      return;
+    }
+
     const newProduct = {
       ...product,
       id: Math.random(),
