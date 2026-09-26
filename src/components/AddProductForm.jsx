@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './AddProductForm.css';
+import ProductInput from './ProductInput';
+import { productInputs } from '../data/productInputs';
 
 const AddProductForm = ({ addNewProduct }) => {
   const [product, setProduct] = useState({
@@ -8,6 +10,8 @@ const AddProductForm = ({ addNewProduct }) => {
     image: '',
     description: '',
   });
+
+  console.log(product);
 
   function handleChange({ target: { value, name } }) {
     setProduct({ ...product, [name]: value });
@@ -26,43 +30,9 @@ const AddProductForm = ({ addNewProduct }) => {
 
   return (
     <form className="add-product-form" onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input
-          type="text"
-          placeholder="Bir ürün ismi giriniz!"
-          name="title"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Price:
-        <input
-          type="number"
-          placeholder="Bir ürün fiyatı giriniz!"
-          name="price"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Image URL:
-        <input
-          type="text"
-          placeholder="Bir ürün görseli giriniz!"
-          name="image"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          placeholder="Bir ürün açıklaması giriniz!"
-          name="description"
-          onChange={handleChange}
-        />
-      </label>
-
+      {productInputs.map((input) => (
+        <ProductInput key={input.name} {...input} onChange={handleChange} />
+      ))}
       <button type="submit">Yeni Ürün Ekle</button>
     </form>
   );
