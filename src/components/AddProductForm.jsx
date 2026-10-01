@@ -3,7 +3,7 @@ import './AddProductForm.css';
 import ProductInput from './ProductInput';
 import { productInputs } from '../data/productInputs';
 
-const AddProductForm = ({ addNewProduct }) => {
+const AddProductForm = ({ addNewProduct, setIsShowModal }) => {
   const [product, setProduct] = useState({
     title: '',
     price: '',
@@ -25,7 +25,7 @@ const AddProductForm = ({ addNewProduct }) => {
     );
 
     if (!isFormValid) {
-      alert('Inputlar boş bırakılamaz!');
+      setIsShowModal(true)
       return;
     }
 
