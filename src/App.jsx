@@ -1,5 +1,5 @@
-import Counter from './components/Counter';
-import Products from './components/Products';
+import Counter from './components/UI/Counter';
+import Products from './components/Products/Products';
 
 function App() {
   return (

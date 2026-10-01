@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './AddProductForm.css';
 import ProductInput from './ProductInput';
-import { productInputs } from '../data/productInputs';
+import { productInputs } from '../../data/productInputs';
 
 const AddProductForm = ({ addNewProduct, setIsShowModal }) => {
   const [product, setProduct] = useState({

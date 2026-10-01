@@ -1,9 +1,9 @@
 import ProductCard from './ProductCard';
-import { productsData } from '../data/productsData';
+import { productsData } from '../../data/productsData';
 import AddProductForm from './AddProductForm';
 import './Products.css';
 import { useState } from 'react';
-import Modal from './UI/Modal';
+import Modal from '../UI/Modal';
 
 const Products = () => {
   const [products, setProducts] = useState(productsData);
