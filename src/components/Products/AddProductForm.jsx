@@ -11,8 +11,6 @@ const AddProductForm = ({ addNewProduct, setIsShowModal }) => {
     description: '',
   });
 
-  console.log(product);
-
   function handleChange({ target: { value, name } }) {
     setProduct({ ...product, [name]: value });
   }
