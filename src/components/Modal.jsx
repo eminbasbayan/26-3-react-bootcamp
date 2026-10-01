@@ -23,6 +23,8 @@ const Modal = ({ title, description, onClose }) => {
           </div>
         </div>
       </div>
+
+      <div className="modal-overlay" onClick={onClose}></div>
     </div>
   );
 };
