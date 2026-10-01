@@ -3,6 +3,7 @@ import { productsData } from '../data/productsData';
 import AddProductForm from './AddProductForm';
 import './Products.css';
 import { useState } from 'react';
+import Modal from './Modal';
 
 const Products = () => {
   const [products, setProducts] = useState(productsData);
@@ -21,6 +22,8 @@ const Products = () => {
           <ProductCard product={product} key={product.id} setProducts={setProducts} />
         ))}
       </div>
+
+      <Modal />
     </div>
   );
 };
