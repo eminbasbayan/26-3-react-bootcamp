@@ -12,7 +12,7 @@ function ProductCard({ product, setProducts }) {
 
   return (
     <div className="product-card">
-      <img className="product-image" src={image} alt="Çanta Görseli" />
+     {/*  <img className="product-image" src={image} alt="Çanta Görseli" /> */}
       <div className="product-info">
         <strong className="product-title">{title}</strong>
         <p className="product-description">{description}</p>
