@@ -1,12 +1,12 @@
-import Counter from './components/UI/Counter';
 import Products from './components/Products/Products';
+import LoginPage from './pages/auth/LoginPage';
 
 function App() {
   return (
     <div className="app">
       <h1>App Component</h1>
-      <Counter />
-      <Products />
+      <LoginPage />
+      {/* <Products /> */}
     </div>
   );
 }
