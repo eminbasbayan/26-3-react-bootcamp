@@ -1,7 +1,23 @@
 import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  username: yup.string().required('Kullanıcı adı zorunludur!'),
+  password: yup
+    .string()
+    .min(6, 'Parola en az 6 karekterli olmalıdır!')
+    .required('Parola zorunludur!'),
+});
 
 const LoginPage = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   function onSubmit(data) {
     console.log(data);
@@ -20,6 +36,9 @@ const LoginPage = () => {
             {...register('username')}
             className="border"
           />
+          {errors.username && (
+            <p className="text-red-400 text-xs">{errors.username.message}</p>
+          )}
         </label>
         <br />
         <br />
@@ -32,6 +51,9 @@ const LoginPage = () => {
             {...register('password')}
             className="border"
           />
+          {errors.password && (
+            <p className="text-red-400 text-xs">{errors.password.message}</p>
+          )}
         </label>
 
         <br />
