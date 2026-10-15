@@ -3,12 +3,16 @@ import LoginPage from './pages/auth/LoginPage';
 import HomePage from './pages/HomePage';
 import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
+import ProductsPage from './pages/ProductsPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     Component: MainLayout,
-    children: [{ path: '/', Component: HomePage }],
+    children: [
+      { path: '/', Component: HomePage },
+      { path: '/products', Component: ProductsPage },
+    ],
   },
   {
     path: '/auth',
