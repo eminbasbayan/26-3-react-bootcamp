@@ -1,10 +1,13 @@
-import Button from "../components/UI/Button";
+import { useNavigate } from 'react-router-dom';
+import Button from '../components/UI/Button';
 
 const NotFound = () => {
+  const navigate = useNavigate();
+  
   return (
     <div>
       <h1>404 NotFound</h1>
-      <Button>Ana Sayfaya Dön</Button>
+      <Button onClick={() => navigate('/')}>Ana Sayfaya Dön</Button>
     </div>
   );
 };
