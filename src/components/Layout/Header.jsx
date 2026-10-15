@@ -1,5 +1,5 @@
 import { Package } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 const Header = () => {
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
@@ -21,18 +21,22 @@ const Header = () => {
           className="hidden items-center gap-1 md:flex"
           aria-label="Ana menü"
         >
-          <Link
+          <NavLink
             to="/"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-slate-500 transition hover:bg-slate-100 hover:text-slate-900"
+            className={({ isActive }) =>
+              `rounded-lg px-4 py-2 text-sm font-medium  transition ${isActive ? 'text-indigo-700 bg-indigo-50' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'} `
+            }
           >
             Ana Sayfa
-          </Link>
-          <Link
+          </NavLink>
+          <NavLink
             to="/products"
-            className="rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700"
+            className={({ isActive }) =>
+              `rounded-lg px-4 py-2 text-sm font-medium  transition ${isActive ? 'text-indigo-700 bg-indigo-50' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'} `
+            }
           >
             Ürünler
-          </Link>
+          </NavLink>
         </nav>
 
         <div className="flex items-center gap-3">
