@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
 import ProductsPage from './pages/ProductsPage';
+import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     path: '/auth',
     Component: AuthLayout,
     children: [{ path: 'login', Component: LoginPage }],
+  },
+
+  {
+    path: '*',
+    Component: NotFound,
   },
 ]);
 

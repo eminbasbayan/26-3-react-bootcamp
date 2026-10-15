@@ -6,6 +6,7 @@ const MainLayout = () => {
     <div>
         <Header />
         <Outlet />
+        <footer>Footer</footer>
     </div>
   )
 }
