@@ -1,6 +1,9 @@
 import { Package } from 'lucide-react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 const Header = () => {
+  const { cartItems } = useContext(CartContext);
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -38,12 +41,12 @@ const Header = () => {
             Ürünler
           </NavLink>
           <NavLink
-            to="/products"
+            to="/cart"
             className={({ isActive }) =>
               `rounded-lg px-4 py-2 text-sm font-medium  transition ${isActive ? 'text-indigo-700 bg-indigo-50' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'} `
             }
           >
-            Sepet {0}
+            Sepet {cartItems.length}
           </NavLink>
         </nav>
 

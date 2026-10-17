@@ -6,6 +6,7 @@ import AuthLayout from './layouts/AuthLayout';
 import ProductsPage from './pages/ProductsPage';
 import NotFound from './pages/NotFound';
 import Counter from './components/UI/Counter';
+import CartPage from './pages/CartPage';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', Component: HomePage },
       { path: '/products', Component: ProductsPage },
+      { path: '/cart', Component: CartPage },
     ],
   },
   {
