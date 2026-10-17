@@ -12,12 +12,15 @@ function ProductCard({ product, setProducts }) {
 
   return (
     <div className="product-card">
-     {/*  <img className="product-image" src={image} alt="Çanta Görseli" /> */}
+      <img className="product-image" src={image} alt="Çanta Görseli" />
       <div className="product-info">
         <strong className="product-title">{title}</strong>
         <p className="product-description">{description}</p>
         <span className="product-price">{price}₺</span>
-        <div className="product-buttons">
+        <div className="product-buttons flex flex-col gap-4">
+          <Button onClick={()=> {}}>
+            <strong>Sepete Ekle</strong>
+          </Button>
           <Button onClick={deleteProduct}>
             <strong>Ürünü Sil</strong>
           </Button>

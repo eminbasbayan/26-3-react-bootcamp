@@ -37,6 +37,14 @@ const Header = () => {
           >
             Ürünler
           </NavLink>
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              `rounded-lg px-4 py-2 text-sm font-medium  transition ${isActive ? 'text-indigo-700 bg-indigo-50' : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900'} `
+            }
+          >
+            Sepet {0}
+          </NavLink>
         </nav>
 
         <div className="flex items-center gap-3">

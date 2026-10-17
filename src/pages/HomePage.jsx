@@ -9,10 +9,10 @@ import {
   SlidersHorizontal,
   Sparkles,
   Star,
-  Trash2,
   X,
 } from 'lucide-react';
 import { productsData } from '../data/productsData';
+import Products from '../components/Products/Products';
 
 const categories = [
   { value: 'all', label: 'Tüm ürünler' },
@@ -76,11 +76,14 @@ const HomePage = () => {
   const ratedProducts = products.filter((product) => product.rating?.rate > 0);
   const averageRating = ratedProducts.length
     ? (
-        ratedProducts.reduce((total, product) => total + product.rating.rate, 0) /
-        ratedProducts.length
+        ratedProducts.reduce(
+          (total, product) => total + product.rating.rate,
+          0,
+        ) / ratedProducts.length
       ).toFixed(1)
     : '—';
-  const categoryCount = new Set(products.map((product) => product.category)).size;
+  const categoryCount = new Set(products.map((product) => product.category))
+    .size;
 
   function handleAddProduct(event) {
     event.preventDefault();
@@ -97,13 +100,13 @@ const HomePage = () => {
     setIsAddDialogOpen(false);
   }
 
-  function handleDeleteProduct(productId, productTitle) {
+/*   function handleDeleteProduct(productId, productTitle) {
     if (window.confirm(`“${productTitle}” ürününü silmek istiyor musunuz?`)) {
       setProducts((currentProducts) =>
         currentProducts.filter((product) => product.id !== productId),
       );
     }
-  }
+  } */
 
   function closeAddDialog() {
     setIsAddDialogOpen(false);
@@ -112,14 +115,15 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-[#f6f7fb] text-slate-900">
- 
-
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pt-10">
         <section
           id="overview"
           className="relative isolate overflow-hidden rounded-[28px] bg-gradient-to-br from-indigo-700 via-indigo-700 to-violet-800 px-6 py-8 text-white shadow-xl shadow-indigo-900/10 sm:px-10 sm:py-10 lg:px-12"
         >
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+          >
             <div className="absolute -right-20 -top-40 h-[420px] w-[420px] rounded-full border border-white/10" />
             <div className="absolute -right-4 -top-24 h-[300px] w-[300px] rounded-full border border-white/10" />
             <div className="absolute -bottom-48 right-1/4 h-80 w-80 rounded-full bg-fuchsia-400/20 blur-3xl" />
@@ -135,7 +139,8 @@ const HomePage = () => {
                 Kataloğun, <span className="text-indigo-200">kontrolünde.</span>
               </h1>
               <p className="mt-4 max-w-xl text-sm leading-6 text-indigo-100/85 sm:text-base">
-                Ürünlerini tek bir yerden görüntüle, ara ve mağazana yenilerini ekle.
+                Ürünlerini tek bir yerden görüntüle, ara ve mağazana yenilerini
+                ekle.
               </p>
               <a
                 href="#products"
@@ -146,7 +151,10 @@ const HomePage = () => {
               </a>
             </div>
 
-            <div aria-hidden="true" className="relative hidden h-48 w-52 items-center justify-center md:flex">
+            <div
+              aria-hidden="true"
+              className="relative hidden h-48 w-52 items-center justify-center md:flex"
+            >
               <div className="absolute right-3 top-2 h-36 w-36 rounded-[32px] border border-white/15 bg-white/10 rotate-12" />
               <div className="relative flex h-28 w-28 items-center justify-center rounded-[28px] border border-white/20 bg-white/15 shadow-2xl shadow-indigo-950/20 backdrop-blur">
                 <Boxes size={52} strokeWidth={1.3} className="text-white" />
@@ -161,14 +169,21 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="mt-6 grid gap-4 sm:grid-cols-3" aria-label="Katalog özeti">
+        <section
+          className="mt-6 grid gap-4 sm:grid-cols-3"
+          aria-label="Katalog özeti"
+        >
           <article className="flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-900/[0.02]">
             <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
               <Package size={22} />
             </span>
             <span>
-              <span className="block text-2xl font-semibold tracking-tight text-slate-950">{products.length}</span>
-              <span className="mt-0.5 block text-sm text-slate-500">Toplam ürün</span>
+              <span className="block text-2xl font-semibold tracking-tight text-slate-950">
+                {products.length}
+              </span>
+              <span className="mt-0.5 block text-sm text-slate-500">
+                Toplam ürün
+              </span>
             </span>
           </article>
           <article className="flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-900/[0.02]">
@@ -176,8 +191,12 @@ const HomePage = () => {
               <Boxes size={22} />
             </span>
             <span>
-              <span className="block text-2xl font-semibold tracking-tight text-slate-950">{categoryCount}</span>
-              <span className="mt-0.5 block text-sm text-slate-500">Ürün kategorisi</span>
+              <span className="block text-2xl font-semibold tracking-tight text-slate-950">
+                {categoryCount}
+              </span>
+              <span className="mt-0.5 block text-sm text-slate-500">
+                Ürün kategorisi
+              </span>
             </span>
           </article>
           <article className="flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-900/[0.02]">
@@ -185,8 +204,12 @@ const HomePage = () => {
               <Star size={22} fill="currentColor" />
             </span>
             <span>
-              <span className="block text-2xl font-semibold tracking-tight text-slate-950">{averageRating}</span>
-              <span className="mt-0.5 block text-sm text-slate-500">Ortalama ürün puanı</span>
+              <span className="block text-2xl font-semibold tracking-tight text-slate-950">
+                {averageRating}
+              </span>
+              <span className="mt-0.5 block text-sm text-slate-500">
+                Ortalama ürün puanı
+              </span>
             </span>
           </article>
         </section>
@@ -194,7 +217,9 @@ const HomePage = () => {
         <section id="products" className="scroll-mt-24 pt-12">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="mb-2 text-sm font-semibold text-indigo-600">MAĞAZA ENVANTERİ</p>
+              <p className="mb-2 text-sm font-semibold text-indigo-600">
+                MAĞAZA ENVANTERİ
+              </p>
               <h2 className="text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
                 Ürün kataloğu
               </h2>
@@ -245,7 +270,10 @@ const HomePage = () => {
                     <option value="price-desc">Fiyat: azalan</option>
                     <option value="rating">En yüksek puan</option>
                   </select>
-                  <ArrowDownUp size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <ArrowDownUp
+                    size={14}
+                    className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+                  />
                 </span>
               </label>
             </div>
@@ -267,7 +295,9 @@ const HomePage = () => {
 
           <div className="mb-4 mt-6 flex items-center justify-between">
             <p className="text-sm text-slate-500" aria-live="polite">
-              <span className="font-semibold text-slate-800">{filteredProducts.length}</span>{' '}
+              <span className="font-semibold text-slate-800">
+                {filteredProducts.length}
+              </span>{' '}
               ürün listeleniyor
             </p>
             {searchTerm && (
@@ -281,7 +311,15 @@ const HomePage = () => {
             )}
           </div>
 
-          {filteredProducts.length > 0 ? (
+        {/*   <div className="grid-cols-3">
+            {products.map((product) => (
+              <ProductCard product={product} />
+            ))}
+          </div> */}
+
+          <Products />
+
+          {/*     {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredProducts.map((product) => (
                 <article
@@ -364,7 +402,7 @@ const HomePage = () => {
                 Filtreleri temizle
               </button>
             </div>
-          )}
+          )} */}
         </section>
       </main>
 
@@ -381,10 +419,15 @@ const HomePage = () => {
                 <span className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <Plus size={21} />
                 </span>
-                <h2 id="add-product-title" className="text-xl font-semibold tracking-tight text-slate-950">
+                <h2
+                  id="add-product-title"
+                  className="text-xl font-semibold tracking-tight text-slate-950"
+                >
                   Yeni ürün ekle
                 </h2>
-                <p className="mt-1 text-sm text-slate-500">Ürün bilgilerini doldurarak kataloğa ekle.</p>
+                <p className="mt-1 text-sm text-slate-500">
+                  Ürün bilgilerini doldurarak kataloğa ekle.
+                </p>
               </div>
               <button
                 type="button"
@@ -403,7 +446,9 @@ const HomePage = () => {
                   required
                   autoFocus
                   value={newProduct.title}
-                  onChange={(event) => setNewProduct({ ...newProduct, title: event.target.value })}
+                  onChange={(event) =>
+                    setNewProduct({ ...newProduct, title: event.target.value })
+                  }
                   placeholder="Örn. Günlük sırt çantası"
                   className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
                 />
@@ -418,7 +463,12 @@ const HomePage = () => {
                     step="0.01"
                     type="number"
                     value={newProduct.price}
-                    onChange={(event) => setNewProduct({ ...newProduct, price: event.target.value })}
+                    onChange={(event) =>
+                      setNewProduct({
+                        ...newProduct,
+                        price: event.target.value,
+                      })
+                    }
                     placeholder="0,00"
                     className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
                   />
@@ -427,12 +477,21 @@ const HomePage = () => {
                   Kategori
                   <select
                     value={newProduct.category}
-                    onChange={(event) => setNewProduct({ ...newProduct, category: event.target.value })}
+                    onChange={(event) =>
+                      setNewProduct({
+                        ...newProduct,
+                        category: event.target.value,
+                      })
+                    }
                     className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
                   >
-                    {categories.filter((category) => category.value !== 'all').map((category) => (
-                      <option key={category.value} value={category.value}>{category.label}</option>
-                    ))}
+                    {categories
+                      .filter((category) => category.value !== 'all')
+                      .map((category) => (
+                        <option key={category.value} value={category.value}>
+                          {category.label}
+                        </option>
+                      ))}
                   </select>
                 </label>
               </div>
@@ -443,7 +502,9 @@ const HomePage = () => {
                   required
                   type="url"
                   value={newProduct.image}
-                  onChange={(event) => setNewProduct({ ...newProduct, image: event.target.value })}
+                  onChange={(event) =>
+                    setNewProduct({ ...newProduct, image: event.target.value })
+                  }
                   placeholder="https://ornek.com/urun.jpg"
                   className="mt-2 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
                 />
@@ -455,7 +516,12 @@ const HomePage = () => {
                   required
                   rows={3}
                   value={newProduct.description}
-                  onChange={(event) => setNewProduct({ ...newProduct, description: event.target.value })}
+                  onChange={(event) =>
+                    setNewProduct({
+                      ...newProduct,
+                      description: event.target.value,
+                    })
+                  }
                   placeholder="Ürünün özelliklerini kısaca anlat"
                   className="mt-2 w-full resize-y rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100"
                 />

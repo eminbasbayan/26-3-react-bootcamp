@@ -80,7 +80,7 @@ const Products = () => {
         setIsShowModal={() => dispatch({ type: 'OPEN_MODAL' })}
       />
       <div className="products-wrapper">
-        {state.products.map((product) => (
+        {products.map((product) => (
           <ProductCard
             product={product}
             key={product.id}
