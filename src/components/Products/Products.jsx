@@ -6,8 +6,6 @@ import Modal from '../UI/Modal';
 import './Products.css';
 
 function reducerFunction(state, action) {
-  console.log(action);
-
   switch (action.type) {
     case 'GET_PRODUCTS':
       return { ...state, products: action.products };

@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CounterContext } from '../../context/CounterContext';
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  const { count, setCount } = useContext(CounterContext);
 
   function arttir() {
     // count = count + 1 hatalı kullanım

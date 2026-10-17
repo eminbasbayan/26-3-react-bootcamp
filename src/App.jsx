@@ -5,6 +5,7 @@ import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
 import ProductsPage from './pages/ProductsPage';
 import NotFound from './pages/NotFound';
+import Counter from './components/UI/Counter';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="app">
+      <Counter />
       <RouterProvider router={router} />
     </div>
   );
