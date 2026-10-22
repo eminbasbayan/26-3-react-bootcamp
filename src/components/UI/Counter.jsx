@@ -1,24 +1,15 @@
-import { useContext, useState } from 'react';
-import { CounterContext } from '../../context/CounterContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { arttir, azalt } from '../../redux/counterSlice';
 
 const Counter = () => {
-  const { count, setCount } = useContext(CounterContext);
-
-  function arttir() {
-    // count = count + 1 hatalı kullanım
-    // setCount(count + 1);
-    setCount((prevState) => prevState + 1);
-  }
-
-  function azalt() {
-    setCount(count - 1);
-  }
+  const { count } = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
 
   return (
     <div className="counter">
-      <button onClick={arttir}>Arttır</button>
+      <button onClick={() => dispatch(arttir({ deger: 2 }))}>Arttır</button>
       <span>{count}</span>
-      <button onClick={azalt}>Azalt</button>
+      <button onClick={() => dispatch(azalt({ deger: 2 }))}>Azalt</button>
     </div>
   );
 };
