@@ -1,15 +1,15 @@
 import MyElement from '../components/MyElement';
 import MyButton from '../components/MyButton';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const ReactTest = () => {
   const [toggleParagraph, setToggleParagraph] = useState(false);
 
   console.log('ReactTest render oldu!');
 
-  const toggleParagraphHandler = () => {
+  const toggleParagraphHandler = useCallback(() => {
     setToggleParagraph((prevState) => !prevState);
-  };
+  }, [])
 
   return (
     <div>
