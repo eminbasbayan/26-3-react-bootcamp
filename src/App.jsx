@@ -7,6 +7,7 @@ import ProductsPage from './pages/ProductsPage';
 import NotFound from './pages/NotFound';
 import Counter from './components/UI/Counter';
 import CartPage from './pages/CartPage';
+import ReactTest from './pages/ReactTest';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', Component: HomePage },
       { path: '/products', Component: ProductsPage },
+      { path: '/test', Component: ReactTest },
       { path: '/cart', Component: CartPage },
     ],
   },
@@ -33,8 +35,8 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="app">
-      <Counter />
-      <RouterProvider router={router} />
+      <ReactTest />
+      {/*      <RouterProvider router={router} /> */}
     </div>
   );
 }
