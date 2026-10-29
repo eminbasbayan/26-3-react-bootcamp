@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import {
   ArrowDownUp,
   ArrowRight,
@@ -48,6 +48,12 @@ const HomePage = () => {
   const [sortBy, setSortBy] = useState('featured');
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
   const [newProduct, setNewProduct] = useState(emptyForm);
+  const inputRef = useRef(null);
+
+  function focusInput() {
+    inputRef.current?.focus();
+    console.log(inputRef.current);
+  }
 
   const filteredProducts = useMemo(() => {
     const query = searchTerm.trim().toLocaleLowerCase('tr-TR');
@@ -100,7 +106,7 @@ const HomePage = () => {
     setIsAddDialogOpen(false);
   }
 
-/*   function handleDeleteProduct(productId, productTitle) {
+  /*   function handleDeleteProduct(productId, productTitle) {
     if (window.confirm(`“${productTitle}” ürününü silmek istiyor musunuz?`)) {
       setProducts((currentProducts) =>
         currentProducts.filter((product) => product.id !== productId),
@@ -116,6 +122,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-[#f6f7fb] text-slate-900">
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-8 sm:px-6 lg:px-8 lg:pt-10">
+        <input ref={inputRef} type="text" />
+        <button onClick={focusInput}>Focusla</button>
         <section
           id="overview"
           className="relative isolate overflow-hidden rounded-[28px] bg-gradient-to-br from-indigo-700 via-indigo-700 to-violet-800 px-6 py-8 text-white shadow-xl shadow-indigo-900/10 sm:px-10 sm:py-10 lg:px-12"
@@ -311,7 +319,7 @@ const HomePage = () => {
             )}
           </div>
 
-        {/*   <div className="grid-cols-3">
+          {/*   <div className="grid-cols-3">
             {products.map((product) => (
               <ProductCard product={product} />
             ))}
