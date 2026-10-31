@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LoginPage from './pages/auth/LoginPage';
 import HomePage from './pages/HomePage';
@@ -7,10 +8,13 @@ import ProductsPage from './pages/ProductsPage';
 import NotFound from './pages/NotFound';
 import CartPage from './pages/CartPage';
 import ReactTest from './pages/ReactTest';
-import AdminLayout from './layouts/AdminLayout';
-import AdminDashboardPage from './pages/admin/AdminDashboardPage';
-import AdminProductsPage from './pages/admin/AdminProductsPage';
-import AdminOrdersPage from './pages/admin/AdminOrdersPage';
+
+const AdminLayout = lazy(() => import('./layouts/AdminLayout'));
+const AdminDashboardPage = lazy(
+  () => import('./pages/admin/AdminDashboardPage'),
+);
+const AdminProductsPage = lazy(() => import('./pages/admin/AdminProductsPage'));
+const AdminOrdersPage = lazy(() => import('./pages/admin/AdminOrdersPage'));
 
 const router = createBrowserRouter([
   {
@@ -45,7 +49,20 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-slate-50">
+          <div className="flex flex-col items-center gap-4 text-slate-500">
+            <span className="h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-indigo-600" />
+            <span className="text-sm font-medium">Yönetim paneli yükleniyor...</span>
+          </div>
+        </div>
+      }
+    >
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
 
 export default App;
