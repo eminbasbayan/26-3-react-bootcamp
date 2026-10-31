@@ -5,9 +5,12 @@ import MainLayout from './layouts/MainLayout';
 import AuthLayout from './layouts/AuthLayout';
 import ProductsPage from './pages/ProductsPage';
 import NotFound from './pages/NotFound';
-import Counter from './components/UI/Counter';
 import CartPage from './pages/CartPage';
 import ReactTest from './pages/ReactTest';
+import AdminLayout from './layouts/AdminLayout';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
+import AdminProductsPage from './pages/admin/AdminProductsPage';
+import AdminOrdersPage from './pages/admin/AdminOrdersPage';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,15 @@ const router = createBrowserRouter([
     Component: AuthLayout,
     children: [{ path: 'login', Component: LoginPage }],
   },
+  {
+    path: '/admin',
+    Component: AdminLayout,
+    children: [
+      { index: true, Component: AdminDashboardPage },
+      { path: 'products', Component: AdminProductsPage },
+      { path: 'orders', Component: AdminOrdersPage },
+    ],
+  },
 
   {
     path: '*',
@@ -33,12 +45,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <div className="app">
-      <ReactTest />
-      {/*      <RouterProvider router={router} /> */}
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
